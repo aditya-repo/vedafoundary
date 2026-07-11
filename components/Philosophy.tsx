@@ -68,13 +68,12 @@ function FaintMandala({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
 function LotusDivider() {
   return (
     <div className="flex items-center justify-center gap-3 mt-5 mx-auto lg:mx-0 w-full max-w-[180px] sm:max-w-[220px]">
       <div className="h-px flex-1 bg-gold/50" />
-
       <LotusIcon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-
       <div className="h-px flex-1 bg-gold/50" />
     </div>
   );
@@ -83,12 +82,10 @@ function LotusDivider() {
 export default function Philosophy() {
   return (
     <section className="relative overflow-hidden">
-      {/* Desktop Background */}
+      {/* Full-bleed backgrounds — desktop only */}
       <div className="absolute inset-0 hidden lg:grid lg:grid-cols-2">
-        {/* Left */}
         <div className="relative bg-cream overflow-hidden">
           <FaintMandala className="w-[420px] h-[420px] -left-20 top-1/2 -translate-y-1/2 opacity-60" />
-
           <div className="absolute right-0 top-0 bottom-0 w-[38%]">
             <Image
               src={bgImage}
@@ -97,138 +94,56 @@ export default function Philosophy() {
               className="object-cover object-center opacity-90"
               sizes="300px"
             />
-
             <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/40 to-transparent" />
           </div>
         </div>
-
-        {/* Right */}
         <div className="relative bg-navy overflow-hidden">
           <FaintMandala className="w-[500px] h-[500px] -right-32 top-1/2 -translate-y-1/2 opacity-40" />
         </div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 overflow-hidden rounded-2xl">
-
-          {/* Quote Section */}
-          <div className="relative bg-cream lg:bg-transparent flex items-center min-h-[220px] sm:min-h-[260px] lg:min-h-[380px] py-10 sm:py-12 lg:py-16 lg:pr-6">
-
-            {/* Mobile Mandala */}
+        <div className="grid lg:grid-cols-2 overflow-hidden lg:overflow-visible rounded-none">
+          {/* Quote */}
+          <div className="relative bg-cream lg:bg-transparent flex items-center min-h-[240px] sm:min-h-[280px] lg:min-h-[380px] py-12 lg:py-16 lg:pr-6 px-2 sm:px-0">
             <div className="lg:hidden absolute inset-0 overflow-hidden">
-              <FaintMandala
-                className="
-                  w-[260px]
-                  h-[260px]
-                  sm:w-[320px]
-                  sm:h-[320px]
-                  left-1/2
-                  top-1/2
-                  -translate-x-1/2
-                  -translate-y-1/2
-                  opacity-40
-                "
-              />
+              <FaintMandala className="w-[280px] h-[280px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40" />
             </div>
 
             <blockquote className="relative z-10 w-full lg:pr-[15%]">
-              <p
-                className="
-                font-serif
-                text-xl
-                sm:text-2xl
-                lg:text-3xl
-                text-navy
-                leading-snug
-                italic
-                text-center
-                lg:text-left
-              "
-              >
-                &ldquo;Code is the new Sanskrit — precise, powerful,
-                timeless.&rdquo;
+              <p className="font-serif text-xl sm:text-2xl lg:text-3xl text-navy leading-snug italic text-center lg:text-left">
+                &ldquo;Code is the new Sanskrit — precise, powerful, timeless.&rdquo;
               </p>
-
               <LotusDivider />
             </blockquote>
           </div>
 
-          {/* Philosophy Section */}
-          <div
-            className="
-            bg-navy
-            lg:bg-transparent
-            py-10
-            sm:py-12
-            lg:py-16
-            lg:pl-6
-            px-4
-            flex
-            flex-col
-            justify-center
-            min-h-auto
-            lg:min-h-[380px]
-          "
-          >
-            <p className="section-label mb-4">
-              Our Philosophy
-            </p>
+          {/* Philosophy + stats */}
+          <div className="bg-navy lg:bg-transparent py-12 lg:py-16 lg:pl-6 px-4 sm:px-6 flex flex-col justify-center lg:min-h-[380px]">
+            <p className="section-label mb-4">Our Philosophy</p>
 
             <p className="text-white/80 text-sm leading-relaxed mb-3">
-              We draw inspiration from ancient Indian wisdom —
-              where everything was designed with purpose,
-              harmony, and precision. That same mindset drives
-              how we build software today.
+              We draw inspiration from ancient Indian wisdom — where everything was designed
+              with purpose, harmony, and precision. That same mindset drives how we build
+              software today.
             </p>
-
             <p className="text-white/80 text-sm leading-relaxed mb-8">
-              We believe in clarity over complexity,
-              craftsmanship over shortcuts, and long-term
-              partnerships over one-time projects.
+              We believe in clarity over complexity, craftsmanship over shortcuts, and
+              long-term partnerships over one-time projects.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-4">
               {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="
-                    flex
-                    flex-col
-                    gap-2
-                    items-center
-                    sm:items-start
-                    text-center
-                    sm:text-left
-                  "
-                >
-                  <span className="text-gold">
-                    {stat.icon}
-                  </span>
-
-                  <p
-                    className="
-                    font-serif
-                    text-2xl
-                    lg:text-3xl
-                    font-semibold
-                    text-white
-                    leading-none
-                  "
-                  >
+                <div key={stat.label} className="flex flex-col gap-1.5">
+                  <span className="text-gold">{stat.icon}</span>
+                  <p className="font-serif text-2xl font-semibold text-white leading-none">
                     {stat.value}
                   </p>
-
-                  <p className="text-white/50 text-xs leading-tight">
-                    {stat.label}
-                  </p>
+                  <p className="text-white/50 text-[11px] leading-tight">{stat.label}</p>
                 </div>
               ))}
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

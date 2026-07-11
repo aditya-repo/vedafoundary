@@ -1,4 +1,5 @@
 import { PlusIcon } from "./icons";
+import { WHATSAPP_URL } from "./WhatsAppFloat";
 
 export default function CTA() {
   return (
@@ -11,7 +12,12 @@ export default function CTA() {
           Let&apos;s discuss your project and explore how we can bring your vision to life
           with precision and craftsmanship.
         </p>
-        <a href="mailto:hello@vedafoundry.com" className="btn-gold">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold"
+        >
           Start a Project
           <PlusIcon />
         </a>

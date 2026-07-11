@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, PlusIcon } from "./icons";
 import heroImage from "@/app/assets/hero-optimized.png";
+import { WHATSAPP_URL } from "./WhatsAppFloat";
 
 export default function Hero() {
   return (
@@ -20,7 +21,12 @@ export default function Hero() {
               built to last.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#contact" className="btn-primary shrink-0">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary shrink-0"
+              >
                 <span className="whitespace-nowrap">Start a Project</span>
                 <PlusIcon className="text-gold" />
               </a>
