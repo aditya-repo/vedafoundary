@@ -133,7 +133,7 @@ export default function InsightsCarousel() {
             <div
               key={article.title}
               data-carousel-card
-              className="snap-start shrink-0 w-[calc((100%-1rem)/1.4)] sm:w-[calc((100%-1rem)/2.2)]"
+              className="snap-start shrink-0 w-[calc((100%-1rem)/1.25)] sm:w-[calc((100%-1rem)/2.2)]"
             >
               <ArticleCard article={article} />
             </div>
