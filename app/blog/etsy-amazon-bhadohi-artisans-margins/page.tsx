@@ -2,17 +2,33 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
+import JsonLd from "@/components/JsonLd";
 import { PlusIcon } from "@/components/icons";
 import { WHATSAPP_URL } from "@/components/WhatsAppFloat";
+import {
+  buildArticleJsonLd,
+  buildArticleMetadata,
+  type ArticleFaq,
+} from "@/lib/article-seo";
 import coverImage from "@/app/assets/bhadohi-blog.webp";
 
-export const metadata: Metadata = {
+const articleSeo = {
+  path: "/blog/etsy-amazon-bhadohi-artisans-margins",
   title: "Why Selling Only on Etsy & Amazon Is Costing Bhadohi Rug Artisans Their Margins",
   description:
     "Marketplace fees, zero brand ownership, no customer data — and one policy violation away from losing your entire storefront overnight. Here's why Bhadohi rug sellers need their own website as a safety net.",
-};
+  headline:
+    "Why Selling Only on Etsy & Amazon Is Costing Bhadohi Rug Artisans Their Margins",
+  publishedAt: "2024-06-10",
+  category: "E-Commerce",
+  image: coverImage,
+  imageAlt:
+    "Bhadohi rug artisan weaving — marketplace fees vs owning your own e-commerce website",
+} as const;
 
-const faqs = [
+export const metadata: Metadata = buildArticleMetadata(articleSeo);
+
+const faqs: ArticleFaq[] = [
   {
     question: "Should rug sellers stop selling on Etsy or Amazon?",
     answer:
@@ -38,6 +54,7 @@ const faqs = [
 export default function BhadohiMarketplaceBlogPage() {
   return (
     <PageShell>
+      <JsonLd data={buildArticleJsonLd({ ...articleSeo, faqs })} />
       <article className="py-12 lg:py-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <Link

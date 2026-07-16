@@ -2,17 +2,32 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
+import JsonLd from "@/components/JsonLd";
 import { PlusIcon } from "@/components/icons";
 import { WHATSAPP_URL } from "@/components/WhatsAppFloat";
+import {
+  buildArticleJsonLd,
+  buildArticleMetadata,
+  type ArticleFaq,
+} from "@/lib/article-seo";
 import coverImage from "@/app/assets/whatsapp-blog.jpg";
 
-export const metadata: Metadata = {
+const articleSeo = {
+  path: "/blog/whatsapp-property-sharing-doesnt-scale",
   title: "The WhatsApp Trap: Why Property Dealers Need a Website",
   description:
     "Still sending property photos and PDFs on WhatsApp? Discover why it doesn't scale and how a real estate website helps manage inventory and generate more leads.",
-};
+  headline: "The WhatsApp Trap: Why Sharing Properties One-by-One Doesn't Scale",
+  publishedAt: "2024-04-28",
+  category: "Growth",
+  image: coverImage,
+  imageAlt:
+    "The WhatsApp trap for property dealers — chat chaos vs a professional real estate website",
+} as const;
 
-const faqs = [
+export const metadata: Metadata = buildArticleMetadata(articleSeo);
+
+const faqs: ArticleFaq[] = [
   {
     question: "Is WhatsApp enough for managing a real estate business?",
     answer:
@@ -38,6 +53,7 @@ const faqs = [
 export default function WhatsAppTrapBlogPage() {
   return (
     <PageShell>
+      <JsonLd data={buildArticleJsonLd({ ...articleSeo, faqs })} />
       <article className="py-12 lg:py-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <Link

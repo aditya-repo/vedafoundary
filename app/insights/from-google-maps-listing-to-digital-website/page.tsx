@@ -2,15 +2,26 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
+import JsonLd from "@/components/JsonLd";
 import { PlusIcon } from "@/components/icons";
 import { WHATSAPP_URL } from "@/components/WhatsAppFloat";
+import { buildArticleJsonLd, buildArticleMetadata } from "@/lib/article-seo";
 import coverImage from "@/app/assets/Ranking-Real-Estate-Business-on-Google-Maps.webp";
 
-export const metadata: Metadata = {
-  title: "From Google Maps Listing to Digital Website — Veda Foundry",
+const articleSeo = {
+  path: "/insights/from-google-maps-listing-to-digital-website",
+  title: "From Google Maps Listing to Digital Website",
   description:
     "Your Google Maps listing gets you found — but not chosen. Here's what real estate dealers need to add to actually convert visitors into buyers.",
-};
+  headline:
+    "From Google Maps Listing to Digital Website: What Property Dealers Are Missing",
+  publishedAt: "2024-05-12",
+  category: "Product",
+  image: coverImage,
+  imageAlt: "Ranking a real estate business on Google Maps",
+} as const;
+
+export const metadata: Metadata = buildArticleMetadata(articleSeo);
 
 const checklist = [
   "A live, browsable property catalog — searchable by budget, locality, and type, not a static PDF you email on request",
@@ -25,6 +36,7 @@ const checklist = [
 export default function GoogleMapsBlogPage() {
   return (
     <PageShell>
+      <JsonLd data={buildArticleJsonLd(articleSeo)} />
       <article className="py-12 lg:py-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <Link

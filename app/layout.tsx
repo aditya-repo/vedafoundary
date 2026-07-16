@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -16,9 +17,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Veda Foundry — Product-Grade Web Platforms",
-  description:
-    "We build product-grade web platforms for modern businesses. Ancient values. Modern execution.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Product-Grade Web Platforms`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
   manifest: "/site.webmanifest",
   icons: {
     icon: [
@@ -27,6 +31,22 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "/",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Product-Grade Web Platforms`,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Product-Grade Web Platforms`,
+    description: SITE_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
   themeColor: "#fdfbf7",
 };
 
