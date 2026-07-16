@@ -66,10 +66,12 @@ export default function Services() {
               key={service.title}
               className="card-hover bg-white rounded-lg p-8 shadow-sm border border-navy/5"
             >
-              <div className="mb-5">{service.icon}</div>
-              <h3 className="font-serif text-lg font-semibold text-navy mb-3">
-                {service.title}
-              </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="shrink-0">{service.icon}</div>
+                <h3 className="font-serif text-lg font-semibold text-navy leading-snug">
+                  {service.title}
+                </h3>
+              </div>
               <p className="text-muted text-sm leading-relaxed mb-5">
                 {service.description}
               </p>

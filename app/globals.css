@@ -130,3 +130,15 @@ body {
   color: var(--gold);
   border-radius: 0.125rem;
 }
+
+.insights-carousel {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 1.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.insights-carousel::-webkit-scrollbar {
+  display: none;
+}
