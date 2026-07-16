@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
+import { EyeIcon } from "./icons";
 import image1 from "@/app/assets/1.webp";
 import image2 from "@/app/assets/3.webp";
 import image3 from "@/app/assets/2.webp";
@@ -85,12 +86,7 @@ const demoProjects: Project[] = [
 
 function ProjectCard({ project, isDemo }: { project: Project; isDemo?: boolean }) {
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block"
-    >
+    <article className="group flex flex-col">
       <div className="relative overflow-hidden rounded-lg mb-5 border border-white/10">
         <Image
           src={project.image}
@@ -108,10 +104,20 @@ function ProjectCard({ project, isDemo }: { project: Project; isDemo?: boolean }
       <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-2">
         {project.category}
       </p>
-      <h3 className="font-serif text-xl font-semibold text-white mb-2 group-hover:text-gold transition-colors">
-        {project.name}
-      </h3>
-      <p className="text-white/60 text-sm leading-relaxed mb-4">{project.description}</p>
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <h3 className="font-serif text-xl font-semibold text-white">{project.name}</h3>
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Live view — ${project.name}`}
+          className="inline-flex items-center gap-1.5 shrink-0 rounded-full border border-gold/60 text-gold px-3 py-1.5 text-xs font-semibold tracking-wide hover:bg-gold hover:text-navy transition-colors"
+        >
+          <EyeIcon className="w-3.5 h-3.5" />
+          Live view
+        </a>
+      </div>
+      <p className="text-white/60 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
           <span key={tag} className="tag">
@@ -119,7 +125,7 @@ function ProjectCard({ project, isDemo }: { project: Project; isDemo?: boolean }
           </span>
         ))}
       </div>
-    </a>
+    </article>
   );
 }
 

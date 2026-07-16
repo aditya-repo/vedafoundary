@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { MandalaLogo, PlusIcon } from "./icons";
-import { WHATSAPP_URL } from "./WhatsAppFloat";
+import { MandalaLogo, PhoneIcon } from "./icons";
+
+const PHONE_URL = "tel:+917050020659";
 
 const navLinks = [
   { label: "Services", href: "/#services" },
@@ -34,14 +35,9 @@ export default function Header() {
             ))}
           </nav>
 
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary text-sm"
-          >
-            Start a Project
-            <PlusIcon className="text-gold" />
+          <a href={PHONE_URL} className="btn-primary text-sm">
+            <PhoneIcon className="w-4 h-4 text-gold" />
+            Free Demo
           </a>
         </div>
       </div>
