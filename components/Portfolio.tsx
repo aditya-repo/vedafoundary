@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { ArrowRight } from "./icons";
 import image1 from "@/app/assets/1.webp";
 import image2 from "@/app/assets/3.webp";
 import image3 from "@/app/assets/2.webp";
+import antiqueBharat from "@/app/assets/antique-bharat.png";
+import mauryaEstate from "@/app/assets/maurya-estate.png";
+import rugsBhadohi from "@/app/assets/rugs-bhadohi.png";
 
 const projects = [
   {
@@ -13,7 +15,6 @@ const projects = [
       "A finance and investment platform connecting investors with opportunities — mutual funds, stocks and wealth management services.",
     url: "https://investorsavenue.co.in",
     tags: ["Next.js", "MongoDB", "Tailwind CSS"],
-    accent: "#6B3FA0",
     image: image1,
   },
   {
@@ -24,7 +25,6 @@ const projects = [
       "A two-sided wedding vendor marketplace connecting couples with photographers, decorators, caterers and planners across India.",
     url: "https://weddinplanner.com",
     tags: ["Next.js", "Node.js", "MongoDB"],
-    accent: "#C4973A",
     image: image3,
   },
   {
@@ -35,8 +35,37 @@ const projects = [
       "A comprehensive career opportunities platform for Indian students — aggregating government jobs, exam results, admit cards, scholarships and internships in one place.",
     url: "https://navikara.com",
     tags: ["Next.js", "SEO", "MongoDB"],
-    accent: "#2D6A4F",
     image: image2,
+  },
+  {
+    id: 4,
+    category: "E-COMMERCE",
+    name: "Antique Bharat",
+    description:
+      "A premium handicrafts and decor storefront celebrating timeless Indian craft — handpicked collections with an elegant, tradition-rooted shopping experience.",
+    url: "https://antiquebharat.vercel.app",
+    tags: ["Next.js", "E-Commerce", "Tailwind CSS"],
+    image: antiqueBharat,
+  },
+  {
+    id: 5,
+    category: "REAL ESTATE",
+    name: "Maurya Estate",
+    description:
+      "A modern real estate platform for discovering premium projects, listings, and property opportunities across cities with a clean buyer-focused experience.",
+    url: "https://maurya-estate.vercel.app",
+    tags: ["Next.js", "MongoDB", "Tailwind CSS"],
+    image: mauryaEstate,
+  },
+  {
+    id: 6,
+    category: "E-COMMERCE",
+    name: "Rugs Bhadohi",
+    description:
+      "A luxury rugs e-commerce brand from Bhadohi — curated collections, lifestyle merchandising, and a refined shopping journey for modern interiors.",
+    url: "https://bhadohi.com",
+    tags: ["Next.js", "E-Commerce", "Tailwind CSS"],
+    image: rugsBhadohi,
   },
 ];
 
@@ -87,13 +116,6 @@ export default function Portfolio() {
               </div>
             </a>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a href="#" className="link-arrow text-gold">
-            View All Projects
-            <ArrowRight />
-          </a>
         </div>
       </div>
     </section>
