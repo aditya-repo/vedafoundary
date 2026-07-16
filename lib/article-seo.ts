@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { StaticImageData } from "next/image";
-import { SITE_NAME, SITE_URL } from "./site";
+import { SITE_NAME, SITE_URL, absoluteImageUrl } from "./site";
 
 export type ArticleFaq = {
   question: string;
@@ -19,10 +19,6 @@ export type ArticleSeoInput = {
   imageAlt: string;
   faqs?: ArticleFaq[];
 };
-
-function absoluteImageUrl(image: StaticImageData) {
-  return new URL(image.src, SITE_URL).toString();
-}
 
 export function buildArticleMetadata(article: ArticleSeoInput): Metadata {
   const imageUrl = absoluteImageUrl(article.image);

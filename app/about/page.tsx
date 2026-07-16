@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { PlusIcon } from "@/components/icons";
+import { PlusIcon, PhoneIcon } from "@/components/icons";
 import { WHATSAPP_URL } from "@/components/WhatsAppFloat";
+import { SITE_PHONE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us — Veda Foundry",
@@ -343,14 +344,9 @@ export default function AboutPage() {
             Tell us about your product, timeline, and goals — we&apos;ll respond with a clear
             next step.
           </p>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold"
-          >
-            Start a Project
-            <PlusIcon />
+          <a href={SITE_PHONE_URL} className="btn-gold">
+            <PhoneIcon className="w-4 h-4" />
+            Free Demo
           </a>
         </div>
       </section>

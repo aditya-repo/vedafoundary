@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ArrowRight, PlusIcon } from "./icons";
+import { ArrowRight, PhoneIcon } from "./icons";
 import heroImage from "@/app/assets/hero-optimized.png";
-import { WHATSAPP_URL } from "./WhatsAppFloat";
+import { SITE_PHONE_URL } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -21,14 +21,9 @@ export default function Hero() {
               built to last.
             </p>
             <div className="flex items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary shrink-0"
-              >
-                <span className="whitespace-nowrap">Start a Project</span>
-                <PlusIcon className="text-gold" />
+              <a href={SITE_PHONE_URL} className="btn-primary shrink-0">
+                <PhoneIcon className="w-4 h-4 text-gold" />
+                <span className="whitespace-nowrap">Free Demo</span>
               </a>
               <a href="#work" className="link-arrow text-navy">
                 Explore Our Work

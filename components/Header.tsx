@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MandalaLogo, PhoneIcon } from "./icons";
-
-const PHONE_URL = "tel:+917050020659";
+import { SITE_PHONE_URL } from "@/lib/site";
 
 const navLinks = [
   { label: "Services", href: "/#services" },
@@ -35,7 +34,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <a href={PHONE_URL} className="btn-primary text-sm">
+          <a href={SITE_PHONE_URL} className="btn-primary text-sm">
             <PhoneIcon className="w-4 h-4 text-gold" />
             Free Demo
           </a>

@@ -1,5 +1,5 @@
-import { PlusIcon } from "./icons";
-import { WHATSAPP_URL } from "./WhatsAppFloat";
+import { PhoneIcon } from "./icons";
+import { SITE_PHONE_URL } from "@/lib/site";
 
 export default function CTA() {
   return (
@@ -12,14 +12,9 @@ export default function CTA() {
           Let&apos;s discuss your project and explore how we can bring your vision to life
           with precision and craftsmanship.
         </p>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-gold"
-        >
-          Start a Project
-          <PlusIcon />
+        <a href={SITE_PHONE_URL} className="btn-gold">
+          <PhoneIcon className="w-4 h-4" />
+          Free Demo
         </a>
       </div>
     </section>
