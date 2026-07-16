@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import image1 from "@/app/assets/1.webp";
 import image2 from "@/app/assets/3.webp";
 import image3 from "@/app/assets/2.webp";
@@ -6,26 +7,36 @@ import antiqueBharat from "@/app/assets/antique-bharat.png";
 import mauryaEstate from "@/app/assets/maurya-estate.png";
 import rugsBhadohi from "@/app/assets/rugs-bhadohi.png";
 
-const projects = [
+type Project = {
+  id: number;
+  category: string;
+  name: string;
+  description: string;
+  url: string;
+  tags: string[];
+  image: StaticImageData;
+};
+
+const liveProjects: Project[] = [
   {
     id: 1,
-    category: "FINTECH",
+    category: "REAL ESTATE",
     name: "InvestorsAvenue",
     description:
-      "A finance and investment platform connecting investors with opportunities — mutual funds, stocks and wealth management services.",
+      "A live real estate marketplace with RERA-verified listings from top developers across Gurugram, Noida, Pune and more — locality pricing, profiles, and lead capture.",
     url: "https://investorsavenue.co.in",
     tags: ["Next.js", "MongoDB", "Tailwind CSS"],
     image: image1,
   },
   {
     id: 2,
-    category: "VENDOR MARKETPLACE",
-    name: "WeddinPlanner",
+    category: "E-COMMERCE",
+    name: "Rugs Bhadohi",
     description:
-      "A two-sided wedding vendor marketplace connecting couples with photographers, decorators, caterers and planners across India.",
-    url: "https://weddinplanner.com",
-    tags: ["Next.js", "Node.js", "MongoDB"],
-    image: image3,
+      "A luxury rugs e-commerce brand from Bhadohi — curated collections, lifestyle merchandising, and a refined shopping journey for modern interiors.",
+    url: "https://bhadohi.com",
+    tags: ["Next.js", "E-Commerce", "Tailwind CSS"],
+    image: rugsBhadohi,
   },
   {
     id: 3,
@@ -37,8 +48,21 @@ const projects = [
     tags: ["Next.js", "SEO", "MongoDB"],
     image: image2,
   },
+];
+
+const demoProjects: Project[] = [
   {
     id: 4,
+    category: "VENDOR MARKETPLACE",
+    name: "WeddinPlanner",
+    description:
+      "A two-sided wedding vendor marketplace connecting couples with photographers, decorators, caterers and planners across India.",
+    url: "https://weddinplanner.com",
+    tags: ["Next.js", "Node.js", "MongoDB"],
+    image: image3,
+  },
+  {
+    id: 5,
     category: "E-COMMERCE",
     name: "Antique Bharat",
     description:
@@ -48,7 +72,7 @@ const projects = [
     image: antiqueBharat,
   },
   {
-    id: 5,
+    id: 6,
     category: "REAL ESTATE",
     name: "Maurya Estate",
     description:
@@ -57,17 +81,47 @@ const projects = [
     tags: ["Next.js", "MongoDB", "Tailwind CSS"],
     image: mauryaEstate,
   },
-  {
-    id: 6,
-    category: "E-COMMERCE",
-    name: "Rugs Bhadohi",
-    description:
-      "A luxury rugs e-commerce brand from Bhadohi — curated collections, lifestyle merchandising, and a refined shopping journey for modern interiors.",
-    url: "https://bhadohi.com",
-    tags: ["Next.js", "E-Commerce", "Tailwind CSS"],
-    image: rugsBhadohi,
-  },
 ];
+
+function ProjectCard({ project, isDemo }: { project: Project; isDemo?: boolean }) {
+  return (
+    <a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block"
+    >
+      <div className="relative overflow-hidden rounded-lg mb-5 border border-white/10">
+        <Image
+          src={project.image}
+          alt={project.name}
+          width={1920}
+          height={988}
+          className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
+        />
+        {isDemo && (
+          <span className="absolute top-3 left-3 rounded px-2 py-1 text-[10px] font-semibold tracking-wider uppercase bg-navy/80 text-gold border border-gold/40">
+            Demo
+          </span>
+        )}
+      </div>
+      <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-2">
+        {project.category}
+      </p>
+      <h3 className="font-serif text-xl font-semibold text-white mb-2 group-hover:text-gold transition-colors">
+        {project.name}
+      </h3>
+      <p className="text-white/60 text-sm leading-relaxed mb-4">{project.description}</p>
+      <div className="flex flex-wrap gap-2">
+        {project.tags.map((tag) => (
+          <span key={tag} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </a>
+  );
+}
 
 export default function Portfolio() {
   return (
@@ -81,40 +135,21 @@ export default function Portfolio() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <a
-              key={project.id}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
-              <div className="overflow-hidden rounded-lg mb-5 border border-white/10">
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  width={1920}
-                  height={988}
-                  className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <p className="text-gold text-xs font-semibold tracking-widest uppercase mb-2">
-                {project.category}
-              </p>
-              <h3 className="font-serif text-xl font-semibold text-white mb-2 group-hover:text-gold transition-colors">
-                {project.name}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </a>
+          {liveProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        <div className="mt-16 mb-8 text-center">
+          <p className="section-label mb-2">Demo Representation</p>
+          <p className="text-white/50 text-sm">
+            Sample websites built to showcase design and product capability
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {demoProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} isDemo />
           ))}
         </div>
       </div>
